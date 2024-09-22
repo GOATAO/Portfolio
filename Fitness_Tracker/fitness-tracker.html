@@ -7,6 +7,68 @@
         <link rel="stylesheet" href="./fitness-tracker.css"/>
     </head>
     <body>
-        
+        <header>
+            <nav id="navbar">
+                <a class="navlink">Calories Calculator</a>
+            </nav>
+        </header>
+        <main id="calories-calcualtor">
+            <h1 id="title">Calories Calculator</h1>
+            <div id="form-container">
+                <form>
+                    
+                    <div class="input-wrapper">
+                        <p class="input-text">Gender:</p>
+                        <input id="male-gender-input" type="radio" name="gender" required/>
+                        <label class="input-option" for="male-gender-input">Male</label>
+
+                        <input id="female-gender-input" type="radio" name="gender" required/>
+                        <label class="input-option" for="female-gender-input">Female</label>
+                        
+                        <input id="other-gender-input" type="radio" name="gender" required/>
+                        <label class="input-option" for="other-gender-input">Other</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="age-input">Age: </label>
+                        <input id="age-input" type="number" required/>
+                 
+                        <label for="height-input">Height: </label>
+                        <input id="height-input" type="number" required/>
+                        <span id="height-unit">cm</span>
+
+                        <label for="weight-input">Weight: </label>
+                        <input id="weight-input" type="number" required/>
+                        <span id="weight-unit">kg</span>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <p class="input-text">Training Frequency</p>
+                        <select id="training-frequency">
+                            <option value="0" selected>Less than once a week</option>
+                            <option value="1">Once/Twice a week</option>
+                            <option value="2">3-5 times a week</option>
+                            <option value="3">More than 5 times a week</option>
+                        </select>
+                    </div>
+
+                    <button id="submit-btn" type="submit">Calculate</button>
+                    <button id="clear-btn" type="clear">Clear</button>
+
+                </form>
+            </div>
+            <div id="result-container" class="hide">
+                <span id="bmr-span" class="result-span"><strong>BMR: </strong></span>
+                <span id="protein-span" class="result-span"><strong>Protein: </strong></span>
+                <span id="fat-span" class="result-span"><strong>Fat: </strong></span>
+                
+                <h3 id="calories-goals">Calorie Goals</h3>
+                <span id="surplus-span" class="result-span"></span>
+                <span id="slight-surplus-span" class="result-span"></span>
+                <span id="maintenance-span" class="result-span"></span>
+                <span id="slight-defecit-span" class="result-span"></span>
+                <span id="defecit-span" class="result-span"></span>
+            </div>
+        </main>
+        <script src="calorie-calculator.js"></script>
     </body>
 </html>
