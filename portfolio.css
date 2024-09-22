@@ -173,7 +173,7 @@ body{
     border-radius: 0.5em;
 }
 
-.coming-soon{
+.project-text, .coming-soon{
     color: var(--dark-blurple4);
     font: italic 1.5em sans-serif;
     text-align: center;
@@ -255,8 +255,8 @@ a:visited, a:link{
    
 }
 
-.fa:hover{
-    cursor: pointer;
+.fa:hover, .out:hover, .project-text:hover{
+    cursor: pointer!important;
 }
 
 .fa{
