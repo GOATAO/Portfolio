@@ -27,6 +27,10 @@
     user-select: none;
 }
 
+input:hover{
+    cursor: pointer;
+}
+
 html{
     width: 100vw;
     height: 100vh;
@@ -38,7 +42,7 @@ body{
     background-color: var(--dark-blurple1);
     color: var(--light-blurple3);
     overflow: hidden;
-    font: normal 1rem mcs,sans-serif; 
+    font: normal 1em mcs,sans-serif; 
 }
 
 
@@ -50,13 +54,14 @@ header{
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
+    overflow: hidden;
 }
 
 #page-title{
     flex:4;
     font: bolder 1.5em agalega, tahoma;
     text-align: center;
-    margin: 0 1em;
+    margin: 5em 1em;
 }
 
 #navbar{
@@ -66,6 +71,7 @@ header{
     justify-content: center;
     align-items: end;
     margin-bottom: 1em;
+   
 }
 
 .current-page{
@@ -76,3 +82,112 @@ header{
 .current-page:hover{
     cursor: not-allowed;
 }
+
+#calories-calculator{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 3fr 6fr;
+    padding: 0em 2em;
+    
+}
+
+#title{
+    font-style: bolder;
+    font-size: 3em;
+    grid-column: 1/3;
+    align-self: center;
+    justify-self: center;
+    color: var(--blurple);
+}
+
+#calories-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 3em;
+    background-color: var(--dark-blurple2);
+    border: 0.25em solid var(--dark-blurple4);
+    border-radius: 3em;
+    padding: 2em;
+}
+
+.input-wrapper{
+    margin: 0.5em auto;
+    
+}
+.input-text:first-of-type{
+    margin-right: 1em;
+}
+
+input-text{
+    font-style: bolder;
+}
+
+input[type="radio"]:checked{
+    accent-color: var(--blurple);
+}
+
+input[type="radio"]{
+    accent-color: var(--blurple);
+}
+
+#number-inputs{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+input[type="number"]{
+    appearance: textfield;
+    width: 40%;
+    background-color: var(--dark-blurple4);
+    border: 0.05em solid var(--blurple);
+    color: var(--light-blurple1);
+    padding: 0 0.25em;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#age-input{
+    width:30%;
+    margin-right: -3em;
+}
+
+input[type="number"]::selection{
+  background-color: var(--dark-blurple1);
+}
+
+input[type="number"]:hover{
+    cursor: text;
+}
+
+input[type="number"]:focus{
+    outline: 0.2em solid var(--blurple);
+    border-radius: 0.5em;
+    border: none;
+}
+
+#training-frequency{
+    width: 50%;
+    background-color: var(--dark-blurple4);
+    border: 0.05em solid var(--blurple);
+    color: var(--light-blurple1);
+    padding: 0 0.25em;
+    border-radius: 1em;
+}
+
+.input-text{
+    text-align: center;
+}
+
+
+
+
+ 
