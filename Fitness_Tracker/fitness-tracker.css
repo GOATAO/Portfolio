@@ -87,7 +87,7 @@ header{
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-columns: 2fr 3fr 3fr 2fr;
     grid-template-rows: 1fr 3fr 6fr;
     padding: 0em 2em;
 }
@@ -217,4 +217,22 @@ button:hover{
     height: 80%;
     margin: 0 2em;
     font: bold 1em mcs,sans-serif;
+}
+
+#calories-result{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 3em;
+    background-color: var(--dark-blurple2);
+    border: 0.25em solid var(--dark-blurple4);
+    border-radius: 3em;
+    padding: 1%;
+    grid-column: 3/4;
+}
+
+.hide{
+    display: none!important;
 }
