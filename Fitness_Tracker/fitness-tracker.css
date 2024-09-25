@@ -41,9 +41,6 @@ body{
     font: normal 1rem mcs,sans-serif; 
 }
 
-body *{
-    border: white solid 1px;
-}
 
 header{
     background-color: var(--dark-blurple3);
@@ -53,22 +50,29 @@ header{
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
-    
 }
 
 #page-title{
     flex:4;
     font: bolder 1.5em agalega, tahoma;
+    text-align: center;
+    margin: 0 1em;
 }
 
 #navbar{
     height: 100%;
     flex: 6;
-   
-    
-    
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin-bottom: 1em;
 }
 
-main{
-   
+.current-page{
+    border-bottom: 0.15em solid var(--blurple);
+    border-radius: 0.1em;
+}
+
+.current-page:hover{
+    cursor: not-allowed;
 }
