@@ -11,3 +11,10 @@ const freqInput = document.getElementById("training-frequency");
 
 const calcBtn = document.getElementsByName("calculate-btn");
 const clearBtn = document.getElementById("clear-btn");
+
+const bmrOutput = document.getElementById("bmrSpan");
+const proteinOutput = document.getElementById("proteinSpan");
+const fatOutput = document.getElementById("fatSpan");
+
+//getting the calories elements//
+const caloriesOutput = document.querySelectorAll(".calories-span");
