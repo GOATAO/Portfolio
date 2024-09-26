@@ -34,10 +34,21 @@ function calculate(e){
     e.preventDefault();
     // making sure the required data are present
     if(caloriesForm.checkValidity()){
-        console.log("calculating");
+        // get input data
         if(getInputData() === -1){
             return;
         }
+
+        // BMR calculations
+        const bmr = getBMR();
+
+        // macros calculations
+        const protein = freq > 0 ? [1.4 * weight, 2 * weight] : [0.7 * weight, 0.8 * weight]
+        const fat = isMale ? 30 : isFemale? 20 : 15;
+
+        //calorie goals
+        const calorieGoals = getCalorieGoals(bmr);
+
     } else{
         // reporting missing required data
         caloriesForm.reportValidity();
@@ -53,10 +64,8 @@ function clear(e){
 // populating data fields
 function getInputData(){
     
-    if(maleInput.checked)
-        isMale = true;
-    else if(femaleInput.checked)
-        isFemale = false
+    isMale = maleInput.checked;
+    isFemale = femaleInput.checked;
     
     age = parseInt(ageInput.value);
     height = parseFloat(heightInput.value);
@@ -83,6 +92,27 @@ function getInputData(){
     }
     
     return 0;
+}
+
+// calculates the individual BMR
+function getBMR(){
+    if(isMale){
+        return 88.36 + 13.4 * weight + 4.8 * height - 5.68 * age;
+    } 
+    if(isFemale){
+        return 447.59 + 9.25 * weight + 3.1 * height - 4.33 * age;
+    }
+
+    // handles other
+    return (88.36 + 13.4 * weight + 4.8 * height - 5.68 * age) + 
+        (447.59 + 9.25 * weight + 3.1 * height - 4.33 * age) / 2;
+}
+
+// return the calorie goals of individual rounded to nearest 50
+function getCalorieGoals(bmr){
+    const mainCalories = bmr * (1.2 + freq * 0.175)
+    return [1.2 * mainCalories, 1.1 * mainCalories, mainCalories, 
+        0.9 * mainCalories, 0.8 * mainCalories].map((num) => Math.round(num/50) * 50);
 }
 
 //adding button functions
