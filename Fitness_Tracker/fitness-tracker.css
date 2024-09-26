@@ -27,7 +27,7 @@
     user-select: none;
 }
 
-input:hover, button:hover{
+input:hover, button:hover, select:hover, option:hover{
     cursor: pointer;
 }
 
@@ -116,7 +116,7 @@ header{
 
 #units-container {
     display: flex;
-    width: 50%;
+    width: 75%;
     justify-content: center;
     align-items: center; 
 }
@@ -181,6 +181,10 @@ input[type="radio"]:checked{
 
 input[type="radio"]{
     margin: 0 0.5em;
+}
+
+.input-option:hover{
+    cursor: pointer;
 }
 
 #number-inputs{
@@ -273,6 +277,10 @@ button:hover{
     border-radius: 3em;
     padding: 1%;
     grid-column: 3/4;
+}
+
+.result-span{
+    user-select: text;
 }
 
 .hide{

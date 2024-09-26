@@ -26,7 +26,7 @@ const fatOutput = document.getElementById("fat-span");
 const caloriesGoalsOutput = document.querySelectorAll(".calories-span");
 
 // units trackers
-isMeteric = false;
+isMetric = false;
 weightMulti = 1;
 heightMulti = 1;
 
@@ -41,11 +41,11 @@ let freq = 0;
 // update the functionality of the program depending on units
 function toggleUnits(){
     console.log("changing units")
-    // update isMeteric
-    isMeteric = !unitsToggle.checked
+    // update isMetric
+    isMetric = !unitsToggle.checked
 
     // update display and multipliers
-    if(isMeteric){
+    if(isMetric){
         weightInput.setAttribute("placeholder", "kg");
         heightInput.setAttribute("placeholder", "cm");
         weightMulti = 1;
