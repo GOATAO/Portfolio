@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Fitness Tracker</title>
         <meta charset="UTF-8"/>
@@ -17,6 +17,12 @@
             <h1 id="title">Calories Calculator</h1>
             
             <form id="calories-form">
+                <div id="units-container">
+                    <span>Meteric</span>
+                    <input id="units-toggle" type="checkbox"/>
+                    <label id="toggle-button" for="units-toggle"></label> 
+                    <span>US</span>
+                </div>
                 <div class="input-wrapper">
                     <span class="input-text">Gender</span>
                     <input id="male-input" type="radio" name="gender" required/>
