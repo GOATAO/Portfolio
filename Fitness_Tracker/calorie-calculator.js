@@ -1,5 +1,8 @@
 // getting all needed elements
 const caloriesForm = document.getElementById("calories-form")
+
+const unitsToggle = document.getElementById("units-toggle") 
+
 const maleInput = document.getElementById("male-input");
 const femaleInput = document.getElementById("female-input");
 const otherInput = document.getElementById("other-input");
@@ -22,6 +25,11 @@ const fatOutput = document.getElementById("fat-span");
 // getting the calories elements
 const caloriesGoalsOutput = document.querySelectorAll(".calories-span");
 
+// units trackers
+isMeteric = false;
+weightMulti = 1;
+heightMulti = 1;
+
 // data fields
 let isMale = false;
 let isFemale = false;
@@ -30,6 +38,25 @@ let height = 0;
 let weight = 0;
 let freq = 0; 
 
+// update the functionality of the program depending on units
+function toggleUnits(){
+    console.log("changing units")
+    // update isMeteric
+    isMeteric = !unitsToggle.checked
+
+    // update display and multipliers
+    if(isMeteric){
+        weightInput.setAttribute("placeholder", "kg");
+        heightInput.setAttribute("placeholder", "cm");
+        weightMulti = 1;
+        heightMulti = 1;
+    } else{
+        weightInput.setAttribute("placeholder", "lbs");
+        heightInput.setAttribute("placeholder", "in");
+        weightMulti = 0.45;
+        heightMulti = 2.54;
+    }
+}
 
 // function to handle when calculate is pressed
 function calculate(e){
@@ -72,8 +99,8 @@ function getInputData(){
     isFemale = femaleInput.checked;
     
     age = parseInt(ageInput.value);
-    height = parseFloat(heightInput.value);
-    weight = parseFloat(weightInput.value);
+    weight = weightMulti * parseFloat(weightInput.value);
+    height = heightMulti * parseFloat(heightInput.value);
     
     freq = freqInput.value;
 
@@ -135,6 +162,10 @@ function showResults(bmr, protein, fat, calorieGoals){
       el.innerHTML = `<strong>${caloriesGoalsLabels[i]}</strong> ${calorieGoals[i]}kcal`  
     })
 }
+
+
+// adding toggle function
+unitsToggle.addEventListener("change", toggleUnits)
 
 // adding button functions
 calcBtn.addEventListener("click", calculate);
