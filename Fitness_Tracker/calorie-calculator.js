@@ -34,7 +34,7 @@ function calculate(e){
 // function to handle when clear is pressed
 function clear(e){
     e.preventDefault();
-    console.log("clearing inputs");
+    caloriesForm.reset();
 }
 
 //adding button functions
