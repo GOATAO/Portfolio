@@ -13,12 +13,14 @@ const freqInput = document.getElementById("training-frequency");
 const calcBtn = document.getElementById("calculate-btn");
 const clearBtn = document.getElementById("clear-btn");
 
-const bmrOutput = document.getElementById("bmrSpan");
-const proteinOutput = document.getElementById("proteinSpan");
-const fatOutput = document.getElementById("fatSpan");
+const resDiv = document.getElementById("calories-result");
+
+const bmrOutput = document.getElementById("bmr-span");
+const proteinOutput = document.getElementById("protein-span");
+const fatOutput = document.getElementById("fat-span");
 
 // getting the calories elements
-const caloriesOutput = document.querySelectorAll(".calories-span");
+const caloriesGoalsOutput = document.querySelectorAll(".calories-span");
 
 // data fields
 let isMale = false;
@@ -43,12 +45,14 @@ function calculate(e){
         const bmr = getBMR();
 
         // macros calculations
-        const protein = freq > 0 ? [1.4 * weight, 2 * weight] : [0.7 * weight, 0.8 * weight]
+        const protein = freq > 0 ? 
+        [parseInt(1.4 * weight), parseInt(2 * weight)] : [parseInt(0.7 * weight), parseInt(0.8 * weight)]
         const fat = isMale ? 30 : isFemale? 20 : 15;
 
         //calorie goals
         const calorieGoals = getCalorieGoals(bmr);
 
+        showResults(bmr, protein, fat, calorieGoals);
     } else{
         // reporting missing required data
         caloriesForm.reportValidity();
@@ -104,8 +108,8 @@ function getBMR(){
     }
 
     // handles other
-    return (88.36 + 13.4 * weight + 4.8 * height - 5.68 * age) + 
-        (447.59 + 9.25 * weight + 3.1 * height - 4.33 * age) / 2;
+    return ((88.36 + 13.4 * weight + 4.8 * height - 5.68 * age) + 
+        (447.59 + 9.25 * weight + 3.1 * height - 4.33 * age))/ 2;
 }
 
 // return the calorie goals of individual rounded to nearest 50
@@ -115,7 +119,24 @@ function getCalorieGoals(bmr){
         0.9 * mainCalories, 0.8 * mainCalories].map((num) => Math.round(num/50) * 50);
 }
 
-//adding button functions
+// handle showing the result on page
+function showResults(bmr, protein, fat, calorieGoals){
+    // show the results panel
+    resDiv.classList.remove("hide");
+   
+    // handle basic output
+    bmrOutput.innerHTML = `<strong>BMR</strong> ${bmr.toFixed(0)}kcal`
+    proteinOutput.innerHTML = `<strong>Protein</strong> ${protein[0]}g-${protein[1]}g`
+    fatOutput.innerHTML = `<strong>Fat</strong> ${fat}g`
+
+    // handle calorie goals output
+    const caloriesGoalsLabels = ["Surplus", "Slight Surplus", "Maintenance", "Slight Deficit", "Deficit"];
+    caloriesGoalsOutput.forEach((el, i) => {
+      el.innerHTML = `<strong>${caloriesGoalsLabels[i]}</strong> ${calorieGoals[i]}kcal`  
+    })
+}
+
+// adding button functions
 calcBtn.addEventListener("click", calculate);
 clearBtn.addEventListener("click", clear);
 
