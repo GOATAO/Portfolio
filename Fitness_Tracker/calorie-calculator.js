@@ -109,18 +109,27 @@ function getInputData(){
         alert("Please enter a valid age between 1 and 150");       
         return -1;
     } 
+    
+    // handle weight restrictions
+    if(isNaN(weight) || weight < 1 || (isMetric && weight > 500) || (!isMetric && weight > 1000)){
+        if(isMetric){
+            alert("Please enter a valid height between 1kg and 500kg");
+        } else{
+            alert("Please enter a valid height between 1lbs and 1000lbs");
+        }
+        return -1;
+    }
 
     // handle height restrictions
-    if(isNaN(height) || height < 1 || height > 500){
-        alert("Please enter a valid height between 1 and 500");
-        return -1;
+    if(isNaN(height) || height < 1 || (isMetric && height > 500) || (!isMetric && height > 100)){
+        if(isMetric){
+            alert("Please enter a valid height between 1cm and 500cm");
+        }else{
+            alert("Please enter a valid height between 1in and 100in");
+        }
+       return -1;
     }
 
-    // handle weight restrictions
-    if(isNaN(weight) || weight < 1 || weight > 1000){
-        alert("Please enter a valid height between 1 and 1000");
-        return -1;
-    }
     
     return 0;
 }
@@ -152,14 +161,14 @@ function showResults(bmr, protein, fat, calorieGoals){
     resDiv.classList.remove("hide");
    
     // handle basic output
-    bmrOutput.innerHTML = `<strong>BMR</strong> ${bmr.toFixed(0)}kcal`
-    proteinOutput.innerHTML = `<strong>Protein</strong> ${protein[0]}g-${protein[1]}g`
-    fatOutput.innerHTML = `<strong>Fat</strong> ${fat}g`
+    bmrOutput.innerHTML = `<strong>BMR</strong><span>${bmr.toFixed(0)}kcal</span>`
+    proteinOutput.innerHTML = `<strong>Protein</strong><span>${protein[0]}g-${protein[1]}g</span>`
+    fatOutput.innerHTML = `<strong>Fat</strong><span>${fat}g</span>`
 
     // handle calorie goals output
     const caloriesGoalsLabels = ["Surplus", "Slight Surplus", "Maintenance", "Slight Deficit", "Deficit"];
     caloriesGoalsOutput.forEach((el, i) => {
-      el.innerHTML = `<strong>${caloriesGoalsLabels[i]}</strong> ${calorieGoals[i]}kcal`  
+      el.innerHTML = `<strong>${caloriesGoalsLabels[i]}</strong><span>${calorieGoals[i]}kcal</span>`  
     })
 }
 

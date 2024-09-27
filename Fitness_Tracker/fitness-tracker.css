@@ -20,6 +20,12 @@
     src: url("../fonts/made_carving_soft/MADECarvingSoft-Regular.otf"); 
 }
 
+@font-face {
+    font-family: "mcs-bold"; 
+    src: url("../fonts/made_carving_soft/MADECarvingSoft-Bold.otf"); 
+}
+
+
 *, *::after, *::before{
     box-sizing: border-box;
     padding: 0;
@@ -275,14 +281,39 @@ button:hover{
     background-color: var(--dark-blurple2);
     border: 0.25em solid var(--dark-blurple4);
     border-radius: 3em;
-    padding: 1%;
+    padding: 2em;
     grid-column: 3/4;
 }
 
 .result-span{
     user-select: text;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#calories-goals{
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    color: var(--blurple);
+    font-family: mcs-bold, tahoma;
+}
+
+.calories-span{
+    margin: 0;
+    display: flex;
+    justify-content: space-between; 
+    width: 100%;   
 }
 
 .hide{
     display: none!important;
+}
+
+strong, #title{
+    font-family: mcs-bold, tahoma;
+}
+
+.result-span strong{
+    color: var(--blurple);
 }
